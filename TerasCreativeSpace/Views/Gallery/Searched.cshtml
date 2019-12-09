@@ -1,0 +1,22 @@
+﻿@model Item
+@{
+    Layout = null;
+    ViewData["Title"] = "Search returned";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search returned</title>
+</head>
+<body>
+    <h1>Search returned</h1>
+    <div>
+        <h3>@Model.Title</h3>
+        <img src="@Model.Image" />
+        <p>@Model.Description</p>
+    </div>
+</body>
+</html>
