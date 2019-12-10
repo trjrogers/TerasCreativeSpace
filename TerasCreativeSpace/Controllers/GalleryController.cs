@@ -19,11 +19,12 @@ namespace TerasCreativeSpace.Controllers
 
         public IActionResult Gallery()
         {
-            return View("Gallery", repo.ItemsList);
+            List<Item> items = repo.ItemsList;
+            return View("Gallery", items);
         }
 
         [HttpPost]
-        public IActionResult Searched(string searchString)
+        public IActionResult Gallery(string searchString)
         {
             Item item = repo.GetItemByTitle(searchString);
             return View("Searched", item);

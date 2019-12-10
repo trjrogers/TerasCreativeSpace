@@ -45,10 +45,16 @@ namespace TerasCreativeSpace.Models.Repositories
 
         public Item GetItemByTitle(string itemTitle)
         {
-            Item item = list.First(b => b.Title == itemTitle);
-            //item = context.Items.First(b => b.Title.CompareTo(itemTitle);
-            //item = ItemsList.First(b => b.Title == itemTitle);
-            return item;
+            try
+            {
+                Item item = context.Items.First(b => b.Title == itemTitle);
+                return item;
+            }
+            catch
+            {
+                Item item = new Item("Item not found", "It looks like that item doesn't exist.", "https://via.placeholder.com/350?text=Oops!");
+                return item;
+            }
         }
 
         public void SeedData()

@@ -10,69 +10,17 @@ namespace TerasCreativeSpace.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Image
-        {
-            get
-            {
-                return image;
-            }
-            set
-            {
-                Image = value;
-            }
-        }
-        public string Description
-        {
-            get
-            {
-                return description;
-            }
-            set
-            {
-                Description = value;
-            }
-        }
-        public string Title
-        {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                Title = value;
-            }
-        }
-
-        private string image { get; set; }
-        private string description { get; set; }
-        private string title { get; set; }
-
-        //private string image
-        //{
-        //    get { return image; }
-        //    set { image = value; }
-        //}
-
-        //private string description
-        //{
-        //    get { return description; }
-        //    set { description = value; }
-        //}
-
-        //private string title
-        //{
-        //    get { return title; }
-        //    set { title = value; }
-        //}
+        public string Image { get; set; }
+        public string Description { get; set; }
+        public string Title { get; set; }
 
         public Item() { }
 
         public Item(string t, string d, string i)
         {
-            title = t;
-            description = d;
-            image = i;
+            Title = t;
+            Description = d;
+            Image = i;
         }
     }
 }

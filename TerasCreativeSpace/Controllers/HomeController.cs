@@ -37,10 +37,17 @@ namespace TerasCreativeSpace.Controllers
         [HttpPost]
         public IActionResult Contact(string name, string commentText)
         {
-            Comment c = new Comment(name, commentText);
-            repo.AddComment(c);
-            List<Comment> comments = repo.CommentsList;
-            return View("Contact", comments);
+            if (name != null && commentText != null)
+            {
+                Comment c = new Comment(name, commentText);
+                repo.AddComment(c);
+                List<Comment> comments = repo.CommentsList;
+                return View("Contact", comments);
+            } else
+            {
+                List<Comment> comments = repo.CommentsList;
+                return View("Contact", comments);
+            }
         }
 
         public IActionResult Shop()
