@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TerasCreativeSpace.Models.Repositories;
+using TerasCreativeSpace.Models;
 
 namespace TerasCreativeSpace.Controllers
 {
@@ -21,14 +22,11 @@ namespace TerasCreativeSpace.Controllers
             return View("Gallery", repo.ItemsList);
         }
 
-        public IActionResult Physical()
+        [HttpPost]
+        public IActionResult Searched(string searchString)
         {
-            return View();
-        }
-
-        public IActionResult Digital()
-        {
-            return View();
+            Item item = repo.GetItemByTitle(searchString);
+            return View("Searched", item);
         }
     }
 }

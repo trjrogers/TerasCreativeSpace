@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Comment>
+@{
     ViewData["Title"] = "Contact";
     Layout = null;
 }
@@ -20,7 +21,22 @@
         </ul>
     </nav>
     <div class="main">
-        <p>Main div</p>
-    </div>
+        <p><a href="mailto:rogerst@my.lanecc.edu">Contact me!</a></p>
+        <br />
+        <form asp-controller="Gallery" asp-action="Comment">
+            <input type="text" placeholder="Enter your name" name="name" />
+            <input type="text" placeholder="Enter your comment here" name="commentText" />
+            <input type="submit" value="Submit" />
+        </form>
+        <table>
+            @foreach (Comment c in Model)
+            {
+                <tr>
+                    <td>From @c.Name: </td>
+                    <td>@c.CommentText</td>
+                </tr>
+            }
+        </table>
+</div>
 </body>
 </html>

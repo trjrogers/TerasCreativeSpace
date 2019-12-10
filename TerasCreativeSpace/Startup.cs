@@ -16,9 +16,12 @@ namespace TerasCreativeSpace
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment environment;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            environment = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -26,6 +29,7 @@ namespace TerasCreativeSpace
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -33,12 +37,21 @@ namespace TerasCreativeSpace
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddTransient<iItemRepository, ItemRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
 
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("TCS")));
 
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //if (environment.IsDevelopment())
+            //{
+            //    services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
+            //       Configuration["ConnectionStrings:MsSqlConnection"]));
+            //}
+            //else if (environment.IsProduction())
+            //{
+            //    services.AddDbContext<AppDbContext>(options => options.UseMySql(
+            //        Configuration["ConnectionStrings:MySqlConnection"]));
+            //}
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,17 +20,23 @@
                 <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="main">
-            <p>Main div</p>
-                @*<ul>
-                    <li><a asp-controller="Gallery" asp-action="Digital">Digital works</a></li>
-                    <li><a asp-controller="Gallery" asp-action="Physical">Physical works</a></li>
-                </ul>*@
+        <div class="main" id="galleryMain">
+
+            <form asp-controller="Gallery" asp-action="Searched">
+                <input type="text" placeholder="Example 1" name="searchString" />
+                <input type="submit" value="Search" />
+            </form>
+
+            <br />
+            <h2>Gallery</h2>
+            <br />
             @foreach(Item i in Model)
             {
+            <div class="galleryItem">
                 <p>@i.Title</p><br />
                 <p>@i.Description</p><br />
                 <p><img src="@i.Image" /></p>
+            </div>
             }
         </div>
     </body>

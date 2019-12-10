@@ -44,27 +44,27 @@ namespace TerasCreativeSpace.Models
             }
         }
 
-        //private string image { get;  set; }
-        //private string description { get; set; }
-        //private string title { get;  set; }
+        private string image { get; set; }
+        private string description { get; set; }
+        private string title { get; set; }
 
-        private string image
-        {
-            get { return image; }
-            set { image = value; }
-        }
+        //private string image
+        //{
+        //    get { return image; }
+        //    set { image = value; }
+        //}
 
-        private string description
-        {
-            get { return description; }
-            set { description = value; }
-        }
+        //private string description
+        //{
+        //    get { return description; }
+        //    set { description = value; }
+        //}
 
-        private string title
-        {
-            get { return title; }
-            set { title = value; }
-        }
+        //private string title
+        //{
+        //    get { return title; }
+        //    set { title = value; }
+        //}
 
         public Item() { }
 

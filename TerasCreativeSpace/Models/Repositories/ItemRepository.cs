@@ -10,10 +10,12 @@ namespace TerasCreativeSpace.Models.Repositories
     {
         private AppDbContext context;
 
+        public static List<Item> list = new List<Item>();
+
         public ItemRepository(AppDbContext appDbContext)
         {
             context = appDbContext;
-            if (context.Items.Count<Item>().Equals(0))
+            if (context.Items.Count() == 0)
             {
                 SeedData();
             }
@@ -29,7 +31,10 @@ namespace TerasCreativeSpace.Models.Repositories
 
         public List<Item> ItemsList
         {
-            get { return context.Items.ToList<Item>(); }
+            get
+            {
+                return context.Items.ToList();
+            }
         }
 
         public void AddItem(Item item)
@@ -40,8 +45,9 @@ namespace TerasCreativeSpace.Models.Repositories
 
         public Item GetItemByTitle(string itemTitle)
         {
-            Item item;
-            item = context.Items.First(b => b.Title == itemTitle);
+            Item item = list.First(b => b.Title == itemTitle);
+            //item = context.Items.First(b => b.Title.CompareTo(itemTitle);
+            //item = ItemsList.First(b => b.Title == itemTitle);
             return item;
         }
 
@@ -56,6 +62,12 @@ namespace TerasCreativeSpace.Models.Repositories
                 Item i5 = new Item("Example 5", "Description 5", "https://via.placeholder.com/350?text=Placeholder+5");
                 Item i6 = new Item("Example 6", "Description 6", "https://via.placeholder.com/350?text=Placeholder+6");
 
+                list.Add(i1);
+                list.Add(i2);
+                list.Add(i3);
+                list.Add(i4);
+                list.Add(i5);
+                list.Add(i6);
                 context.Items.Add(i1);
                 context.Items.Add(i2);
                 context.Items.Add(i3);
